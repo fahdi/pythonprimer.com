@@ -10,7 +10,7 @@ disqusShortname = "pythonprimer"
 [params]
   BookTheme = "light"
   BookToC = true
-  BookSection = "algorithms"
+  BookSection = "python"
   BookSearch = true
   BookComments = true
   BookRepo = 'https://github.com/fahdi/pythonprimer.com'
