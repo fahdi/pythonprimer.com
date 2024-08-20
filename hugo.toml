@@ -1,10 +1,10 @@
 baseURL = "https://pythonprimer.com/"
 languageCode = "en-us"
-title = "60 Days of Coding: Algorithm Challenge"
-theme = "booked"
+title = "Pyhton Primer"
+theme = "booked" #
 enableGoogleAnalytics = true
 enableRobotsTXT = true
-disqusShortname = "algorithmsin60days"
+disqusShortname = "pythonprimer"
 
 # Book theme specific options
 [params]
@@ -18,12 +18,11 @@ disqusShortname = "algorithmsin60days"
   BookDateFormat = 'January 2, 2006'
   IsMultilingual = false
   # Improve SEO by adding your own Meta Description and Keywords
-  description = "60 Days of Coding: Algorithm Challenge"
-  author = "Fahad Murtaza aka iSuperCodeR"
-  keywords = "algorithms, coding, programming, challenge, 60 days"
+  description = "Python Primer"
+  author = "Fahad Murtaza aka iSuperCoder"
+  keywords = "python, algorithms, coding, programming, challenge"
   # Add Google analytics tag manager ID  
-  googleAnalytics = "G-MLNTEPYWMG"
-  css = ["css/main.css"]
+  googleAnalytics = "GTM-XXXXXXX"
 
 [markup.goldmark.renderer]
   unsafe = true
