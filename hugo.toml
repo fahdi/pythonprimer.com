@@ -1,0 +1,58 @@
+baseURL = "https://pythonprimer.com/"
+languageCode = "en-us"
+title = "60 Days of Coding: Algorithm Challenge"
+theme = "booked"
+enableGoogleAnalytics = true
+enableRobotsTXT = true
+disqusShortname = "algorithmsin60days"
+
+# Book theme specific options
+[params]
+  BookTheme = "light"
+  BookToC = true
+  BookSection = "algorithms"
+  BookSearch = true
+  BookComments = true
+  BookRepo = 'https://github.com/fahdi/pythonprimer.com'
+  BookEditPath = 'edit/main'
+  BookDateFormat = 'January 2, 2006'
+  IsMultilingual = false
+  # Improve SEO by adding your own Meta Description and Keywords
+  description = "60 Days of Coding: Algorithm Challenge"
+  author = "Fahad Murtaza aka iSuperCodeR"
+  keywords = "algorithms, coding, programming, challenge, 60 days"
+  # Add Google analytics tag manager ID  
+  googleAnalytics = "G-MLNTEPYWMG"
+  css = ["css/main.css"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[menu]
+[[menu.before]]
+  name = "Login"
+  url = "/login"
+  weight = 10
+
+[[menu.before]]
+  name = "Dashboard"
+  url = "/dashboard"
+  weight = 11  
+
+[[menu.before]]
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menu.after]]
+  name = "About"
+  url = "/about"
+  weight = 20
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML"]
+  page = ["HTML"]
+
+[build]
+  writeStats = true

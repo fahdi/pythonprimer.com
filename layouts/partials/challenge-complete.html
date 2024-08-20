@@ -1,0 +1,173 @@
+<div id="challenge-completion">
+    <button id="mark-complete-btn" class="action-btn" style="display: none;">Mark as Complete</button>
+    <p id="completion-status">Initializing...</p>
+</div>
+
+<style>
+    #challenge-completion {
+        margin: 2rem 0;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    #mark-complete-btn {
+        background-color: #28a745;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+    #mark-complete-btn:hover {
+        background-color: #218838;
+    }
+    #mark-complete-btn:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+    }
+    #completion-status {
+        margin-top: 1rem;
+        font-style: italic;
+    }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const markCompleteBtn = document.getElementById('mark-complete-btn');
+    const completionStatus = document.getElementById('completion-status');
+
+    const currentDay = getCurrentDay();
+    console.log("Current day:", currentDay);
+
+    let db;
+
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    async function initializeFirebase() {
+      try {
+        if (typeof firebase === 'undefined') {
+          await loadScript('https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js');
+          await loadScript('https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js');
+          await loadScript('https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js');
+        }
+
+        if (!firebase.apps.length) {
+          const firebaseConfig = {
+            // Your Firebase config object here
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            // ... other config properties
+          };
+          firebase.initializeApp(firebaseConfig);
+        }
+
+        db = firebase.firestore();
+        console.log("Firebase and Firestore initialized");
+      } catch (error) {
+        console.error("Error initializing Firebase:", error);
+        throw error;
+      }
+    }
+
+    function getCurrentDay() {
+      const pageTitle = document.title;
+      const match = pageTitle.match(/Day (\d+)/);
+      return match ? parseInt(match[1]) : null;
+    }
+
+    function updateCompletionStatus(completed) {
+      console.log("Updating completion status:", completed);
+      if (completed) {
+        completionStatus.textContent = "You've completed this day's challenge!";
+        markCompleteBtn.disabled = true;
+      } else {
+        completionStatus.textContent = "You haven't completed this day's challenge yet.";
+        markCompleteBtn.disabled = false;
+      }
+      markCompleteBtn.style.display = 'inline-block';
+    }
+
+    function checkCompletionStatus() {
+      console.log("Checking completion status");
+      if (!currentDay) {
+        console.error("Couldn't determine the current day");
+        completionStatus.textContent = "Error: Couldn't determine the current day.";
+        return;
+      }
+
+      const user = firebase.auth().currentUser;
+      if (user) {
+        console.log("User is authenticated");
+        const taskRef = db.collection('users').doc(user.uid).collection('tasks').doc(`day${currentDay}`);
+        taskRef.get().then((doc) => {
+          if (doc.exists) {
+            console.log("Task document exists:", doc.data());
+            updateCompletionStatus(doc.data().completed);
+          } else {
+            console.log("Task document doesn't exist, creating it");
+            taskRef.set({
+              name: `Day ${currentDay}: Complete coding challenge`,
+              completed: false
+            }).then(() => {
+              updateCompletionStatus(false);
+            });
+          }
+        }).catch((error) => {
+          console.error("Error checking completion status:", error);
+          completionStatus.textContent = "Error checking completion status. Please try again.";
+        });
+      } else {
+        console.log("User is not authenticated");
+        completionStatus.textContent = "Please log in to track your progress.";
+      }
+    }
+
+    markCompleteBtn.addEventListener('click', function() {
+      console.log("Mark complete button clicked");
+      const user = firebase.auth().currentUser;
+      if (user && currentDay) {
+        const taskRef = db.collection('users').doc(user.uid).collection('tasks').doc(`day${currentDay}`);
+        taskRef.set({
+          name: `Day ${currentDay}: Complete coding challenge`,
+          completed: true
+        }, { merge: true })
+          .then(() => {
+            console.log("Task marked as complete in Firestore");
+            updateCompletionStatus(true);
+          })
+          .catch((error) => {
+            console.error("Error updating task status:", error);
+            completionStatus.textContent = "Error updating completion status. Please try again.";
+          });
+      }
+    });
+
+    initializeFirebase()
+      .then(() => {
+        firebase.auth().onAuthStateChanged(function(user) {
+          console.log("Auth state changed. User:", user ? "logged in" : "logged out");
+          if (user) {
+            checkCompletionStatus();
+          } else {
+            completionStatus.textContent = "Please log in to track your progress.";
+          }
+        });
+      })
+      .catch((error) => {
+        console.error("Initialization error:", error);
+        completionStatus.textContent = "Error initializing. Please refresh the page and try again.";
+      });
+  });
+</script>
