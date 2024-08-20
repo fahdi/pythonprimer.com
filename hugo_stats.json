@@ -114,25 +114,10 @@
       "z-20"
     ],
     "ids": [
-      "about-60-days-of-coding-algorithm-challenge",
-      "about-the-creator",
-      "challenge-overview",
-      "how-it-works",
-      "how-to-participate",
-      "master-algorithms-in-60-days-your-path-to-coding-excellence",
-      "our-mission",
-      "prizes-and-recognition",
-      "resources",
-      "rules-and-guidelines",
-      "week-by-week-breakdown",
-      "weeks-1-2-foundations",
-      "weeks-11-12-advanced-topics",
-      "weeks-3-4-data-structures-i",
-      "weeks-5-6-searching-and-sorting",
-      "weeks-7-8-data-structures-ii",
-      "weeks-9-10-dynamic-programming",
-      "what-to-expect",
-      "who-is-this-for"
+
+      "master-python",
+      "master-python-programming-the-complete-2021-python-bootcamp-from-zero-to-hero",
+      "master-python-programming-the-complete-2024-python-bootcamp-from-zero-to-hero",
     ]
   }
 }
