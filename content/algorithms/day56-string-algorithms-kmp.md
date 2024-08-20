@@ -1,1 +1,0 @@
-# Day 56: String Algorithms - KMP Algorithm

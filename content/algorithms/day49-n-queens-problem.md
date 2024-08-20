@@ -1,1 +1,0 @@
-# Day 49: N-Queens Problem
