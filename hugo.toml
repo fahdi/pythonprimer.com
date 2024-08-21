@@ -9,9 +9,9 @@ disqusShortname = "pythonprimer"
 googleAnalytics = "G-VQ6V4E6KG6"
 
 [Params]
-description = "Pyhton 101 for absolute begineers"
-images = ['/digital-garden-logo.png']
-enableSearch = true
+    description = "Python 101 for absolute begineers"
+    images = ['/digital-garden-logo.png']
+    enableSearch = true
 
 [Params.newsletter]
 title = ""
