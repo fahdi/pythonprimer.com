@@ -1,57 +1,92 @@
 baseURL = "https://pythonprimer.com/"
 languageCode = "en-us"
 title = "Pyhton Primer"
-theme = "booked" #
+theme = "digitalgarden" #
 enableGoogleAnalytics = true
 enableRobotsTXT = true
 disqusShortname = "pythonprimer"
 
-# Book theme specific options
-[params]
-  BookTheme = "light"
-  BookToC = true
-  BookSection = "python"
-  BookSearch = true
-  BookComments = true
-  BookRepo = 'https://github.com/fahdi/pythonprimer.com'
-  BookEditPath = 'edit/main'
-  BookDateFormat = 'January 2, 2006'
-  IsMultilingual = false
-  # Improve SEO by adding your own Meta Description and Keywords
-  description = "Python Primer"
-  author = "Fahad Murtaza aka iSuperCoder"
-  keywords = "python, algorithms, coding, programming, challenge"
-  # Add Google analytics tag manager ID  
-  googleAnalytics = "GTM-XXXXXXX"
 
-[markup.goldmark.renderer]
-  unsafe = true
+googleAnalytics = "UA-PROPERTY_ID"
+
+[Params]
+description = "Pyhton 101 for absolute begineers"
+images = ['/digital-garden-logo.png']
+enableSearch = true
+
+[Params.newsletter]
+title = ""
+description = "A curated weekly digest once a week to your mailbox"
+
+# Supports buttondown, substack and revue
+provider = "buttondown"
+
+# Buttondown - URL from share page; Refer: https://blog.buttondown.email/2019/10/11/adding-a-buttondown-subscription-form-to-webflow#getting-your-subscription-url
+# Substack - URL of the newsletter homepage; Example: https://on.substack.com/
+# Revue - Username
+path = "https://buttondown.email/api/emails/embed-subscribe/"
 
 [menu]
-[[menu.before]]
-  name = "Login"
-  url = "/login"
-  weight = 10
+[[menu.main]]
+name = 'Home'
+url = '/'
+weight = 1
+[[menu.main]]
+name = 'Python Primer'
+url = '/modules'
+params.header = true
+weight = 2
+[[menu.main]]
+name = 'Python Primer'
+url = '/modules'
+weight = 3
+[[menu.main]]
+name = 'Links'
+params.header = true
+weight = 4
 
-[[menu.before]]
-  name = "Dashboard"
-  url = "/dashboard"
-  weight = 11  
+[[menu.social]]
+name = 'Twitter'
+url = 'https://twitter.com'
+weight = 1
+[[menu.social]]
+name = 'GitHub'
+url = 'https://github.com'
+weight = 2
+[[menu.social]]
+name = 'LinkedIn'
+url = 'https://linkedin.com'
+weight = 3
+[[menu.social]]
+name = 'Instagram'
+url = 'https://instagram.com'
+weight = 4
+[[menu.social]]
+name = 'Dribbble'
+url = 'https://dribbble.com'
+weight = 5
+[[menu.social]]
+name = 'Codepen'
+url = 'https://codepen.io'
+weight = 6
+[[menu.social]]
+name = 'Twitch'
+url = 'https://twitch.com'
+weight = 7
+[[menu.social]]
+name = 'Email'
+url = 'mailto:user@example.org'
+weight = 8
+[[menu.social]]
+name = 'RSS'
+url = '/modules/index.xml'
+weight = 9
 
-[[menu.before]]
-  name = "Home"
-  url = "/"
-  weight = 10
 
-[[menu.after]]
-  name = "About"
-  url = "/about"
-  weight = 20
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-  section = ["HTML"]
-  page = ["HTML"]
-
-[build]
-  writeStats = true
+# syntax highlight settings
+[markup]
+[markup.highlight]
+style = "dracula"
+[markup.goldmark.renderer]
+# Enable to include inline HTML
+unsafe = true
