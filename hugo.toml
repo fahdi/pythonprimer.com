@@ -1,11 +1,10 @@
 baseURL = "https://pythonprimer.com/"
 languageCode = "en-us"
-title = "Pyhton Primer"
+title = "Python Primer"
 theme = "digitalgarden" #
 enableGoogleAnalytics = true
 enableRobotsTXT = true
 disqusShortname = "pythonprimer"
-
 
 googleAnalytics = "UA-PROPERTY_ID"
 
@@ -24,58 +23,43 @@ provider = "buttondown"
 # Buttondown - URL from share page; Refer: https://blog.buttondown.email/2019/10/11/adding-a-buttondown-subscription-form-to-webflow#getting-your-subscription-url
 # Substack - URL of the newsletter homepage; Example: https://on.substack.com/
 # Revue - Username
-path = "https://buttondown.email/api/emails/embed-subscribe/"
+path = "https://buttondown.com/api/emails/embed-subscribe/iSuperCoder?tag=python"
 
 [menu]
 [[menu.main]]
 name = 'Home'
 url = '/'
 weight = 1
+
 [[menu.main]]
 name = 'Python Primer'
 url = '/modules'
 params.header = true
 weight = 2
-[[menu.main]]
-name = 'Python Primer'
-url = '/modules'
-weight = 3
-[[menu.main]]
-name = 'Links'
-params.header = true
-weight = 4
 
 [[menu.social]]
 name = 'Twitter'
-url = 'https://twitter.com'
+url = 'https://x.com/fahdmurtaza'
 weight = 1
 [[menu.social]]
 name = 'GitHub'
-url = 'https://github.com'
+url = 'https://github.com/fahdi'
 weight = 2
 [[menu.social]]
 name = 'LinkedIn'
-url = 'https://linkedin.com'
+url = 'https://www.linkedin.com/in/fahdmurtaza/'
 weight = 3
 [[menu.social]]
 name = 'Instagram'
-url = 'https://instagram.com'
-weight = 4
-[[menu.social]]
-name = 'Dribbble'
-url = 'https://dribbble.com'
+url = 'https://instagram.com/iSuperCoder'
 weight = 5
 [[menu.social]]
 name = 'Codepen'
-url = 'https://codepen.io'
+url = 'https://codepen.io/iSuperCoder/'
 weight = 6
 [[menu.social]]
-name = 'Twitch'
-url = 'https://twitch.com'
-weight = 7
-[[menu.social]]
 name = 'Email'
-url = 'mailto:user@example.org'
+url = 'mailto:info@fahdmurtaza.com'
 weight = 8
 [[menu.social]]
 name = 'RSS'
