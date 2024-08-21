@@ -6,7 +6,7 @@ enableGoogleAnalytics = true
 enableRobotsTXT = true
 disqusShortname = "pythonprimer"
 
-googleAnalytics = "UA-PROPERTY_ID"
+googleAnalytics = "G-VQ6V4E6KG6"
 
 [Params]
 description = "Pyhton 101 for absolute begineers"
@@ -34,7 +34,6 @@ weight = 1
 [[menu.main]]
 name = 'Python Primer'
 url = '/modules'
-params.header = true
 weight = 2
 
 [[menu.social]]
