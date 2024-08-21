@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Personal Digital Garden"
 theme = "digitalgarden"
 
-googleAnalytics = "UA-PROPERTY_ID"
+googleAnalytics = "G-VQ6V4E6KG6"
 
 [Params]
   description = "My Digital Garden on the Internet"
